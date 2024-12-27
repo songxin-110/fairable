@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="money" class="com.atguigu.ioc_04.Money" init-method="init" destroy-method="destroy"/>
+<!--    声明一个组件，默认是单例模式，如果需要多例模式，可以设置成scope="prototpe"
+        每次getbean都会创建一个对象，因为每次创建得对象都不一样，所以是多例模式
+-->
+    <bean id="water" class="com.atguigu.ioc_04.Water" scope="prototype"/>
+</beans>

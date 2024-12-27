@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--单个构造函数注入-->
+    <bean id="userDao" class="com.atguigu.ioc2.UserDao"/>
+    <bean id="userService" class="com.atguigu.ioc2.UserService">
+<!--
+        springIoc容器是高级容器，内部会有缓存动作
+        1，先创建对象ioc 2，再进行赋值
+        constructor-arg 构造器参数传值 di 依赖注入
+        value = 直接属性值
+        -->
+
+        <constructor-arg ref="userDao"/>
+        <constructor-arg value="wangwu"/>
+        <constructor-arg value="20"/>
+    </bean>
+
+<!--    <bean id="userService2" class="com.atguigu.ioc2.UserService">-->
+<!--        <constructor-arg value="10"/>-->
+<!--    </bean>-->
+
+<!--    2，多个构造参数 注入：
+       方案1，构造参数的顺序填写 value 直接赋值 ref 引用其他组件的beanId值
+
+-->
+    <bean id="userService3" class="com.atguigu.ioc2.UserService">
+        <constructor-arg ref="userDao"/>
+        <constructor-arg value="zhangsan"/>
+        <constructor-arg value="10"/>
+    </bean>
+
+<!--    方案二 ：构造参数的名称填写值 不需要考虑顺序
+        name = 构造参数名称，value 赋值 ref 引用其他组件的beanId
+
+-->
+    <bean id="userService4" class="com.atguigu.ioc2.UserService">
+        <constructor-arg name="name" value="lisi"/>
+        <constructor-arg name="age" value="10"/>
+        <constructor-arg name="userDao" ref="userDao"/>
+    </bean>
+<!--
+        方案三：通过构造参数的参数下标指定填写，不用考虑顺序
+        index = 构造参数下脚标 从0开始
+-->
+    <bean id="userService5" class="com.atguigu.ioc2.UserService">
+        <constructor-arg index="1" value="wangwu"/>
+        <constructor-arg index="2" value="21"/>
+        <constructor-arg index="0" ref="userDao"/>
+    </bean>
+
+<!--    二。触发setter方法进行注入-->
+    <bean id="movie" class="com.atguigu.ioc2.Movie"/>
+<!--    属性名  setter的方法名 去set和首字母小写的值 调用set方法名
+        value | ref 二选一
+        value 直接赋值 ref 引用其他组件的beanId值
+        -->
+    <bean id="simpleMovie" class="com.atguigu.ioc2.SimpleMovie">
+        <property name="movieName" value="hahaha"/>
+        <property name="movie" ref="movie"/>
+    </bean>
+
+</beans>

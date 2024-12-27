@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--        如何实例化-->
+<!--        基于无参构造-->
+<!--               bean主要是配置对象，id是唯一的，class是配置对象的全类名,权限定符-->
+<!--        注意：组件一定是对象，对象不一定是组件-->
+
+        <bean id="person" class="com.atguigu.Person" />
+        <bean id="happy" class="com.atguigu.ioc.Happy"/>
+<!--        2，基于静态工厂方法实例化-->
+
+        <bean id="client" class="com.atguigu.ioc.ClientService" factory-method="getInstance"/>
+<!--        3，非静态工厂如何声明ioc配置-->
+<!--        <bean id="locator" class="com.atguigu.ioc.locator"/>-->
+<!--        3.2通过指定非静态工厂对象和方法名来配置生成的ioc信息-->
+        <!--
+
+        -->
+<!--        <bean id="clientServlet1" factory-bean="locator" factory-method="create"/>-->
+</beans>

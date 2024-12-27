@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--        组件的信息 ioc的配置  applicationContext去读取   实例化对象
+            ioc容器的配置一定是实现类！ 真正要进行实例化
+-->
+
+    <bean id="happyness" class="com.atguigu.ioc3.HaCome"/>
+<!--    <bean id="happyness1" class="com.atguigu.ioc3.HaCome"/>-->
+
+</beans>
